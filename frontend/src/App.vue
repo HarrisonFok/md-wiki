@@ -19,6 +19,9 @@
         <tr v-for="article in articles" :key="article.id" @dblclick="$data.article = article">
           <td>{{ article.name }}</td>
           <td>{{ article.content }}</td>
+          <td>
+            <button class="btn btn-outline-danger btn-sm mx-1" @click="deleteArticle(article)">x</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -72,6 +75,17 @@ export default {
       })
       await this.getArticles()
       this.article = {}
+    },
+    async deleteArticle(article) {
+      await this.getArticles()
+      await fetch(`http://localhost:8000/articles/${article.id}/`, {
+        method: 'delete',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(this.article)
+      })
+      await this.getArticles()
     }
   }
 }
