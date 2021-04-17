@@ -1,13 +1,8 @@
-from django.shortcuts import render
-from django.http import JsonResponse
+from rest_framework.viewsets import ModelViewSet
 
 from .models import Article
+from .serializers import ArticleSerializer
 
-def index(request):
-    articles = []
-    for article in Article.objects.all():
-        articles.append({
-            "name": article.name,
-            "content": article.content
-        })
-    return JsonResponse(articles, safe=False)
+class ArticlesViewSet(ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
