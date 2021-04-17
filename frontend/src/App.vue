@@ -22,9 +22,21 @@
           <td>
             <button class="btn btn-outline-danger btn-sm mx-1" @click="deleteArticle(article)">x</button>
           </td>
+          <td>
+            <div class="btn btn-outline-info btn-sm mx-1" @click="viewArticle(article)">View</div>
+          </td>
         </tr>
       </tbody>
     </table>
+
+    <div class="form-group row">
+      <div class="row">
+        <p>{{ article.name }}</p>
+        <p>{{ article.content }}</p>
+      </div>
+    </div>
+
+    <div class="btn btn-info" @click="reset()">Reset</div>
   </div>
 </template>
 
@@ -86,6 +98,22 @@ export default {
         body: JSON.stringify(this.article)
       })
       await this.getArticles()
+    },
+    async viewArticle(article) {
+      let res = await fetch(`http://localhost:8000/articles/${article.id}/`, {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      let theArticle = await res.json()
+      this.article = theArticle
+    },
+    reset() {
+      this.article = {
+        "name": "",
+        "content": "",
+      }
     }
   }
 }
