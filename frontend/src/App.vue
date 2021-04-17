@@ -1,5 +1,14 @@
 <template>
   <div id="app">
+    <form @submit.prevent="createArticle">
+      <div class="form-group row">
+        <div class="row">
+          <input type="text" class="form-control col-3 mx-2" placeholder="Name" v-model="article.name">
+          <input type="text" class="form-control col-3 mx-2" placeholder="Course" v-model="article.content">
+          <div class="btn btn-success">Submit</div>
+        </div>
+      </div>
+    </form>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -21,6 +30,10 @@ export default {
   name: 'App',
   data() {
     return {
+      article: {
+        'name': '',
+        'content': ''
+      },
       articles: []
     }
   },
