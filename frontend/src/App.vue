@@ -38,19 +38,23 @@ export default {
     }
   },
   async created() {
-    let res = await fetch("http://localhost:8000/articles/")
-    this.articles = await res.json()
+    await this.getArticles()
   },
   methods: {
+    async getArticles() {
+      let res = await fetch("http://localhost:8000/articles/")
+      this.articles = await res.json()
+    },
     async createArticle() {
-      let res = await fetch("http://localhost:8000/articles/", {
+      await this.getArticles()
+      await fetch("http://localhost:8000/articles/", {
         method: 'post',
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(this.article)
       })
-      this.articles.push(await res.json())
+      await this.getArticles()
     }
   }
 }
