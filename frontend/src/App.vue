@@ -4,8 +4,8 @@
       <div class="form-group row">
         <div class="row">
           <input type="text" class="form-control col-3 mx-2" placeholder="Name" v-model="article.name">
-          <input type="text" class="form-control col-3 mx-2" placeholder="Course" v-model="article.content">
-          <div class="btn btn-success">Submit</div>
+          <input type="text" class="form-control col-3 mx-2" placeholder="Content" v-model="article.content">
+          <div class="btn btn-success" @click="createArticle()">Submit</div>
         </div>
       </div>
     </form>
@@ -40,6 +40,18 @@ export default {
   async created() {
     let res = await fetch("http://localhost:8000/articles/")
     this.articles = await res.json()
+  },
+  methods: {
+    async createArticle() {
+      let res = await fetch("http://localhost:8000/articles/", {
+        method: 'post',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(this.article)
+      })
+      this.articles.push(await res.json())
+    }
   }
 }
 </script>
