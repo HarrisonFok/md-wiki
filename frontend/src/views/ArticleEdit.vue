@@ -1,6 +1,15 @@
 <template>
     <div>
-        {{$route.params.article}}
+        <h1>{{$route.params.article.name}}</h1>
+        {{$route.params.article.content}}
+        {{$route.params.article.id}}
+        <div class="form-group row">
+            <div class="row">
+            <input type="text" class="form-control col-2 mx-2" placeholder="Name" v-model="article.name">
+            <input type="text" class="form-control col-2 mx-2" placeholder="Content" v-model="article.content">
+            <div class="btn btn-success" @click="submitForm()">Submit</div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -11,5 +20,22 @@ export default {
             article: {}
         }
     },
+    methods: {
+        submitForm() {
+            console.log(this.article)
+            this.editArticle(this.$route.params.article)
+        },
+        async editArticle() {
+            console.log(this.$route.params.id)
+            await fetch(`http://localhost:8000/articles/${this.$route.params.article.id}/`, {
+                method: 'put',
+                headers: {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(this.$route.params.article)
+            })
+            this.article = {}
+        },
+    }
 }
 </script>

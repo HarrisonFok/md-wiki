@@ -110,7 +110,7 @@ export default {
       // let theArticle = await res.json()
       // this.article = theArticle
       // this.$router.push({name: "SingleArticle", query: {article: this.article.name}})
-      this.$router.push({ name: "Single", params: { article: article }})
+      this.$router.push({ path: `${article.name}`, name: "Single", params: { article: article }})
     },
     // reset() {
     //   this.article = {

@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- {{$route.params.article}} -->
-        <div class="btn btn-outline-info btn-sm mx-1" @click="editArticle(article)">Edit</div>
+        <div class="btn btn-outline-info btn-sm mx-1" @click="editArticle($route.params.article)">Edit</div>
         <p>{{this.$route.params.article.name}}</p>
         <p>{{this.$route.params.article.content}}</p>
         <!-- {{$route.params.article}} -->
@@ -10,17 +10,18 @@
 
 <script>
 export default {
-    data() {
-        return {
-            article: {}
-        }
-    },
+    // data() {
+    //     return {
+    //         article: {}
+    //     }
+    // },
     methods: {
         editArticle(article) {
+            console.log(article)
             // console.log(this.$route.params.article.name)
-            console.log(this.article)
+            // console.log(this.article)
             // path: `/edit/${this.$route.params.article.name}`
-            this.$router.push({ name: "Edit", params: { article: article}})
+            this.$router.push({ name: "Edit", params: { article: this.$route.params.article}})
         }
     }
 }
