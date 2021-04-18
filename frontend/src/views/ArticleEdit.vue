@@ -1,11 +1,15 @@
 <template>
     <div>
-        <h1>Article edit</h1>
+        {{$route.params.article}}
     </div>
 </template>
 
 <script>
 export default {
-    
+    data() {
+        return {
+            article: {}
+        }
+    },
 }
 </script>

@@ -2,8 +2,8 @@
     <div>
         <!-- {{$route.params.article}} -->
         <div class="btn btn-outline-info btn-sm mx-1" @click="editArticle(article)">Edit</div>
-        {{this.$route.params.article.name}}
-        {{this.$route.params.article.content}}
+        <p>{{this.$route.params.article.name}}</p>
+        <p>{{this.$route.params.article.content}}</p>
         <!-- {{$route.params.article}} -->
     </div>
 </template>
@@ -17,13 +17,11 @@ export default {
     },
     methods: {
         editArticle(article) {
+            // console.log(this.$route.params.article.name)
+            console.log(this.article)
+            // path: `/edit/${this.$route.params.article.name}`
             this.$router.push({ name: "Edit", params: { article: article}})
         }
-    },
-    created() {
-        console.log(this.$route.params)
-        // this.article = this.$route.params
-        // console.log(this.article)
     }
 }
 </script>

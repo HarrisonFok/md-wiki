@@ -100,7 +100,7 @@ export default {
       await this.getArticles()
     },
     async viewArticle(article) {
-      console.log(article.name, article.content)
+      // console.log(article.name, article.content)
       // let res = await fetch(`http://localhost:8000/articles/${article.id}/`, {
       //   method: "get",
       //   headers: {
@@ -110,7 +110,7 @@ export default {
       // let theArticle = await res.json()
       // this.article = theArticle
       // this.$router.push({name: "SingleArticle", query: {article: this.article.name}})
-      this.$router.push({ name: `Single`, params: { article: article }})
+      this.$router.push({ name: "Single", params: { article: article }})
     },
     // reset() {
     //   this.article = {
