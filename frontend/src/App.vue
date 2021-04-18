@@ -3,8 +3,8 @@
     <form @submit.prevent="submitForm">
       <div class="form-group row">
         <div class="row">
-          <input type="text" class="form-control col-3 mx-2" placeholder="Name" v-model="article.name">
-          <input type="text" class="form-control col-3 mx-2" placeholder="Content" v-model="article.content">
+          <input type="text" class="form-control col-2 mx-2" placeholder="Name" v-model="article.name">
+          <input type="text" class="form-control col-2 mx-2" placeholder="Content" v-model="article.content">
           <div class="btn btn-success" @click="submitForm()">Submit</div>
         </div>
       </div>
