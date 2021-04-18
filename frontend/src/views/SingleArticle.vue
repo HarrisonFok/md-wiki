@@ -17,7 +17,7 @@ export default {
     },
     methods: {
         editArticle(article) {
-            this.$route.push({ name: "Edit", params: { article: article}})
+            this.$router.push({ name: "Edit", params: { article: article}})
         }
     },
     created() {
