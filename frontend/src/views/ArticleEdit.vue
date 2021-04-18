@@ -4,9 +4,9 @@
         {{$route.params.article.content}}
         <div class="form-group row">
             <div class="row">
-            <input type="text" class="form-control col-2 mx-2" placeholder="Name" v-model="article.name">
-            <input type="text" class="form-control col-2 mx-2" placeholder="Content" v-model="article.content">
-            <div class="btn btn-success" @click="submitForm()">Submit</div>
+                <input type="text" class="form-control col-2 mx-2" placeholder="Name" v-model="article.name">
+                <input type="text" class="form-control col-2 mx-2" placeholder="Content" v-model="article.content">
+                <div class="btn btn-success" @click="submitForm()">Submit</div>
             </div>
         </div>
     </div>
@@ -34,6 +34,7 @@ export default {
                 body: JSON.stringify(this.article)
             })
             this.article = {}
+            this.$router.push({ name: "Home"})
         },
     }
 }

@@ -5,7 +5,7 @@
         <div class="row">
           <input type="text" class="form-control col-2 mx-2" placeholder="Name" v-model="article.name">
           <input type="text" class="form-control col-2 mx-2" placeholder="Content" v-model="article.content">
-          <div class="btn btn-success" @click="submitForm()">Submit</div>
+          <div class="btn btn-success" @click="createArticle()">Submit</div>
         </div>
       </div>
     </form>
@@ -28,15 +28,6 @@
         </tr>
       </tbody>
     </table>
-
-    <!-- <div class="form-group row">
-      <div class="row">
-        <p>{{ article.name }}</p>
-        <p>{{ article.content }}</p>
-      </div>
-    </div>
-
-    <div class="btn btn-info" @click="reset()">Reset</div> -->
   </div>
 </template>
 
@@ -53,14 +44,6 @@ export default {
     await this.getArticles()
   },
   methods: {
-    submitForm() {
-      console.log(this.article)
-      if (this.article.id === undefined) {
-        this.createArticle()
-      } else {
-        this.editArticle()
-      }
-    },
     async getArticles() {
       let res = await fetch("http://localhost:8000/articles/")
       this.articles = await res.json()
@@ -76,18 +59,6 @@ export default {
       })
       await this.getArticles()
     },
-    async editArticle() {
-      await this.getArticles()
-      await fetch(`http://localhost:8000/articles/${this.article.id}/`, {
-        method: 'put',
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(this.article)
-      })
-      await this.getArticles()
-      this.article = {}
-    },
     async deleteArticle(article) {
       await this.getArticles()
       await fetch(`http://localhost:8000/articles/${article.id}/`, {
@@ -100,24 +71,8 @@ export default {
       await this.getArticles()
     },
     async viewArticle(article) {
-      // console.log(article.name, article.content)
-      // let res = await fetch(`http://localhost:8000/articles/${article.id}/`, {
-      //   method: "get",
-      //   headers: {
-      //     "Content-Type": "application/json"
-      //   }
-      // })
-      // let theArticle = await res.json()
-      // this.article = theArticle
-      // this.$router.push({name: "SingleArticle", query: {article: this.article.name}})
       this.$router.push({ path: `${article.name}`, name: "Single", params: { article: article }})
     },
-    // reset() {
-    //   this.article = {
-    //     "name": "",
-    //     "content": "",
-    //   }
-    // }
   }
 }
 </script>
