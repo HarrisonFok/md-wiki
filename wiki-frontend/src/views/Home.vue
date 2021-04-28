@@ -57,6 +57,7 @@ export default {
         body: JSON.stringify({name, content})
       })
       await this.getArticles()
+      this.article = {}
     }
   }
 }
