@@ -5,17 +5,17 @@ services:
     #     command: python manage.py runserver 0.0.0.0:8000
     #     ports: 
     #         - 8000:8000
-    api:
-        container_name: api-container
-        restart: always
-        build: ./backend/
-        ports: 
-            - "8081:8081"
+    # api:
+    #     container_name: api-container
+    #     restart: always
+    #     build: ./backend/
+    #     ports: 
+    #         - "8081:8081"
     client:
         container_name: client-container
         restart: always
         build: ./frontend/
         ports: 
             - "8080:8080"
-        depends_on: 
-            - api
+        # depends_on: 
+        #     - api
