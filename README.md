@@ -3,10 +3,11 @@
 ```
 Running the backend
 ```
-- cd wiki-backend/
+- cd wiki-backend-second/
 - source bin/activate
 - uvicorn main:app --reload
-- Note: wiki-backend/ is a virtual environment
+    - Note: wiki-backend-second/ is a virtual environment
+    - Note: wiki-backend/ stopped working after running "docker-compose up" in root
 
 ```
 Running the frontend

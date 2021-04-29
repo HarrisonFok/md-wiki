@@ -3,9 +3,10 @@
     <form @submit.prevent="submitForm">
       <div class="form-group row">
         <div class="row">
-          <input type="text" class="form-control col-2 mx-2" placeholder="Name" v-model="article.name">
-          <input type="text" class="form-control col-2 mx-2" placeholder="Content" v-model="article.content">
-          <div class="btn btn-success" @click="createArticle()">Submit</div>
+          <v-text-field v-model="article.name"></v-text-field>
+          <v-text-field v-model="article.content"></v-text-field>
+          <!-- <div class="btn btn-success" @click="createArticle()">Submit</div> -->
+          <v-btn @click="createArticle()">Submit</v-btn>
         </div>
       </div>
     </form>
@@ -15,7 +16,6 @@
         <th>Content</th>
       </thead>
       <tbody>
-        <!-- @dblclick="$data.student = student" -->
         <tr v-for="article in articles" :key="article.id" @dblclick="$data.article = article">
           <td>{{ article.name }}</td>
           <td>{{ article.content }}</td>
@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       article: {},
-      articles: []
+      articles: [],
     }
   },
   async created() {

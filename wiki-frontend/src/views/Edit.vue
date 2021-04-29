@@ -4,9 +4,10 @@
     <form @submit.prevent="submitForm">
       <div class="form-group row">
         <div class="row">
-          <input type="text" class="form-control col-2 mx-2" placeholder="Content" v-model="article.content">
-          <div class="btn btn-success" @click="editArticle()">Save</div>
-          <div class="btn btn-danger" @click="cancelEdit()">Cancel</div>
+          <!-- <input type="text" class="form-control col-2 mx-2" placeholder="Content" v-model="article.content"> -->
+          <v-text-field v-model="article.content"></v-text-field>
+          <v-btn @click="editArticle()">Save</v-btn>
+          <v-btn @click="cancelEdit()">Cancel</v-btn>
         </div>
       </div>
     </form>

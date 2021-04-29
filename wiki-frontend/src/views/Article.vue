@@ -1,17 +1,30 @@
 <template>
   <div>
-    <div v-if="this.error == null">
-        <router-link :to="'/edit/' + article.name">
-            <div class="btn btn-outline-info btn-sm mx-1">Edit</div>
-        </router-link>
-        <h1>{{ this.article.name }}</h1>
-        <p>{{ this.article.content }}</p>
-    </div>
-    <div v-else>
-        <h3>
-            No article with this exact name found. Use Edit button in the header to add it.
-        </h3>
-    </div>
+      <v-container fill-height fluid>
+        <v-row align="center" justify="center">
+            <div v-if="this.error == null">
+                <router-link :to="'/edit/' + article.name">
+                    <!-- <div class="btn btn-outline-info btn-sm mx-1">Edit</div> -->
+                    <v-btn
+                        class="ma-2"
+                        color="purple"
+                        dark
+                    >
+                        <v-icon dark>
+                        mdi-wrench
+                        </v-icon>
+                    </v-btn>
+                </router-link>
+                <h1>{{ this.article.name }}</h1>
+                <p>{{ this.article.content }}</p>
+            </div>
+            <div v-else>
+                <h3>
+                    No article with this exact name found. Use Edit button in the header to add it.
+                </h3>
+            </div>
+        </v-row>
+      </v-container>
   </div>
 </template>
 
