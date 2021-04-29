@@ -2,13 +2,16 @@
   <div id="app">
     <form @submit.prevent="submitForm">
       <div class="form-group row">
-        <div class="row">
-          <v-text-field v-model="article.name"></v-text-field>
-          <v-text-field v-model="article.content"></v-text-field>
-          <!-- <div class="btn btn-success" @click="createArticle()">Submit</div> -->
-          <v-btn @click="createArticle()">Submit</v-btn>
-        </div>
+        <v-row>
+          <v-col cols="12" sm="6" md="4" style="margin-left: 30px">
+            <v-text-field v-model="article.name" label="Name"></v-text-field>
+          </v-col>
+          <v-col cols="12" sm="6" md="4">
+            <v-text-field v-model="article.content" label="Content"></v-text-field>
+          </v-col>
+        </v-row>
       </div>
+      <v-btn @click="createArticle()">Submit</v-btn>
     </form>
     <table class="table">
       <thead>
@@ -20,7 +23,8 @@
           <td>{{ article.name }}</td>
           <td>{{ article.content }}</td>
           <router-link :to="'/' + article.name">
-            <div class="btn btn-outline-info btn-sm mx-1">View</div>
+            <!-- <div class="btn btn-outline-info btn-sm mx-1">View</div> -->
+            <v-btn>View</v-btn>
           </router-link>
         </tr>
       </tbody>
@@ -62,3 +66,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+    .centered-input {
+      text-align: center
+    }
+</style>
