@@ -16,6 +16,11 @@ Running the frontend
 - npm run serve
 
 ```
+Building the frontend
+```
+- npm run build
+
+```
 Running the container
 ```
 - Go to the root project directory
