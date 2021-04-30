@@ -1,11 +1,13 @@
 <template>
   <div>
-    <h1>{{article.name}}</h1>
+    <h1 style="margin-left: 20px">{{article.name}}</h1>
     <form @submit.prevent="submitForm">
       <div class="form-group row">
         <div class="row">
           <!-- <input type="text" class="form-control col-2 mx-2" placeholder="Content" v-model="article.content"> -->
-          <v-text-field v-model="article.content"></v-text-field>
+          <v-col cols="12" sm="6" md="4" style="margin-left: 30px">
+            <v-text-field v-model="article.content"></v-text-field>
+          </v-col>
           <v-btn @click="editArticle()">Save</v-btn>
           <v-btn @click="cancelEdit()">Cancel</v-btn>
         </div>

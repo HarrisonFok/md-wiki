@@ -13,7 +13,7 @@
       </div>
       <v-btn @click="createArticle()">Submit</v-btn>
     </form>
-    <table class="table">
+    <table class="table" style="margin-left: 30px">
       <thead>
         <th>Name</th>
         <th>Content</th>

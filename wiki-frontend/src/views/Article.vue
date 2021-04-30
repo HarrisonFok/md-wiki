@@ -1,31 +1,38 @@
 <template>
-  <div>
-      <v-container fill-height fluid>
-        <v-row align="center" justify="center">
-            <div v-if="this.error == null">
-                <router-link :to="'/edit/' + article.name">
-                    <!-- <div class="btn btn-outline-info btn-sm mx-1">Edit</div> -->
-                    <v-btn
-                        class="ma-2"
-                        color="purple"
-                        dark
-                    >
-                        <v-icon dark>
-                        mdi-wrench
-                        </v-icon>
-                    </v-btn>
-                </router-link>
-                <h1>{{ this.article.name }}</h1>
-                <p>{{ this.article.content }}</p>
-            </div>
-            <div v-else>
-                <h3>
-                    No article with this exact name found. Use Edit button in the header to add it.
-                </h3>
-            </div>
-        </v-row>
-      </v-container>
-  </div>
+  <v-card
+    class="mx-auto my-12"
+    max-width="374"
+  >
+    <template slot="progress">
+      <v-progress-linear
+        color="deep-purple"
+        height="10"
+        indeterminate
+      ></v-progress-linear>
+    </template>
+
+    <div v-if="this.error == null">
+        <v-card-actions>
+            <router-link :to="'/edit/' + article.name">
+                <v-btn
+                    color="deep-purple lighten-2"
+                    text
+                >
+                    Edit
+                </v-btn>
+            </router-link>
+        </v-card-actions>
+
+        <v-card-title><strong>Name: </strong>{{ this.article.name}}</v-card-title>
+        <v-divider class="mx-4"></v-divider>
+        <v-card-text><strong>Content: </strong>{{ this.article.content }}</v-card-text>
+    </div>
+    <div v-else>
+        <h3>
+            No article with this exact name found. Use Edit button in the header to add it.
+        </h3>
+    </div>
+  </v-card>
 </template>
 
 <script>
@@ -51,7 +58,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>
