@@ -21,6 +21,11 @@ Building the frontend
 - npm run build
 
 ```
+Tests
+```
+- Unit testing is for components, but here, I don't have any components. I only have views.
+
+```
 Running the container
 ```
 - Go to the root project directory
