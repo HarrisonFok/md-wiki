@@ -23,9 +23,11 @@
             </router-link>
         </v-card-actions>
 
-        <v-card-title><strong>Name: </strong>{{ this.article.name}}</v-card-title>
+        <v-card-title><strong>Name:</strong></v-card-title>
+        <v-card-text>{{ this.article.name}}</v-card-text>
         <v-divider class="mx-4"></v-divider>
-        <v-card-text><strong>Content: </strong>{{ this.article.content }}</v-card-text>
+        <v-card-title><strong>Content:</strong></v-card-title>
+        <v-card-text>{{ this.article.content }}</v-card-text>
     </div>
     <div v-else>
         <h3>
