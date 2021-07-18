@@ -30,4 +30,3 @@ Running the container
 ```
 - Go to the root project directory
 - docker-compose up
-    - Note: frontend doesn't work (but still runnable) in the container for some reasons..
